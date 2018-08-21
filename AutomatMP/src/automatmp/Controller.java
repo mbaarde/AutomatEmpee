@@ -11,4 +11,9 @@ package automatmp;
  */
 public class Controller {
     
+    private Model model;
+    private View view;
+    
+    
+    
 }
