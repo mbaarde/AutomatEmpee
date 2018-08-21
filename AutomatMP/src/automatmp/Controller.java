@@ -61,22 +61,22 @@ public class Controller {
             System.out.println("Spaceship does not contain scientist!");
     }
     
-        public boolean isValid (ArrayList<String> planet) {
+        public boolean isValid (ArrayList<String> object) {
         boolean allowed = true;
         
-        if (!planet.contains("Scientist")) {
+        if (!object.contains("Scientist")) {
             
-            if (planet.contains("Savage") && planet.contains("Cow")){
+            if (object.contains("Savage") && object.contains("Cow")){
                 allowed = false;
-            } else if (planet.contains("Cow") && planet.contains("Grain")){
+            } else if (object.contains("Cow") && object.contains("Grain")){
                 allowed = false;
-            } else if (planet.contains("Cow") && planet.contains("Lion")){
+            } else if (object.contains("Cow") && object.contains("Lion")){
                 allowed = false;
-            } else if (planet.contains("Savage") && planet.contains("Lion")){
+            } else if (object.contains("Savage") && object.contains("Lion")){
                 allowed = false;
-            } else if (planet.contains("Human") && planet.contains("Cow")){
+            } else if (object.contains("Human") && object.contains("Cow")){
                 allowed = false;
-            } else if (planet.contains("Human") && planet.contains("Lion")){
+            } else if (object.contains("Human") && object.contains("Lion")){
                 allowed = false;
             }
         }
