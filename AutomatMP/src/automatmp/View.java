@@ -5,6 +5,8 @@
  */
 package automatmp;
 
+import java.awt.Color;
+
 /**
  *
  * @author admin
@@ -89,26 +91,13 @@ public class View extends javax.swing.JFrame {
         rocketScientist.setBorderPainted(false);
         rocketScientist.setText("");
     
-//    rocketGrain.setVisible(false);
-//    rocketCow.setVisible(false);
-//    rocketLion.setVisible(false);
-//    rocketHuman.setVisible(false);
-//    rocketScientist.setVisible(false);
-//    rocketSavage.setVisible(false);
-//    marsGrain.setVisible(false);
-//    marsCow.setVisible(false);
-//    marsLion.setVisible(false);
-//    marsHuman.setVisible(false);
-//    marsScientist.setVisible(false);
-//    marsSavage.setVisible(false);
-    
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Mars = new javax.swing.JLabel();
         earthPanel = new javax.swing.JPanel();
         earthGrain = new javax.swing.JButton();
         earthLion = new javax.swing.JButton();
@@ -116,7 +105,7 @@ public class View extends javax.swing.JFrame {
         earthScientist = new javax.swing.JButton();
         earthSavage = new javax.swing.JButton();
         earthHuman = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        Earth = new javax.swing.JLabel();
         rocketTransport = new javax.swing.JButton();
         rocketPanel = new javax.swing.JPanel();
         rocketGrain = new javax.swing.JButton();
@@ -125,22 +114,28 @@ public class View extends javax.swing.JFrame {
         rocketHuman = new javax.swing.JButton();
         rocketSavage = new javax.swing.JButton();
         rocketScientist = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        earthPanel1 = new javax.swing.JPanel();
+        Rocket = new javax.swing.JLabel();
+        marsPanel = new javax.swing.JPanel();
         marsGrain = new javax.swing.JButton();
         marsLion = new javax.swing.JButton();
         marsCow = new javax.swing.JButton();
         marsScientist = new javax.swing.JButton();
         marsSavage = new javax.swing.JButton();
         marsHuman = new javax.swing.JButton();
+        stateBG = new javax.swing.JLabel();
+        othersPanel = new javax.swing.JPanel();
+        solutionToggle = new javax.swing.JToggleButton();
+        buttonHint = new javax.swing.JButton();
+        Others = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Game");
+        setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Mars:");
+        Mars.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Mars.setText("Mars:");
 
         earthGrain.setText("Grain");
         earthGrain.addActionListener(new java.awt.event.ActionListener() {
@@ -170,10 +165,19 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        earthSavage.setText("Savage");
-        earthSavage.setActionCommand("Savage");
+        earthSavage.setText("Savage(H)");
+        earthSavage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                earthSavageActionPerformed(evt);
+            }
+        });
 
         earthHuman.setText("Human");
+        earthHuman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                earthHumanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout earthPanelLayout = new javax.swing.GroupLayout(earthPanel);
         earthPanel.setLayout(earthPanelLayout);
@@ -187,8 +191,8 @@ public class View extends javax.swing.JFrame {
                     .addComponent(earthCow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(earthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(earthScientist, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                    .addComponent(earthSavage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(earthScientist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(earthSavage, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                     .addComponent(earthHuman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -210,8 +214,8 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Earth:");
+        Earth.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Earth.setText("Earth:");
 
         rocketTransport.setText("Transport");
         rocketTransport.addActionListener(new java.awt.event.ActionListener() {
@@ -221,10 +225,25 @@ public class View extends javax.swing.JFrame {
         });
 
         rocketGrain.setText("Grain");
+        rocketGrain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rocketGrainActionPerformed(evt);
+            }
+        });
 
         rocketLion.setText("Lion");
+        rocketLion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rocketLionActionPerformed(evt);
+            }
+        });
 
         rocketCow.setText("Cow");
+        rocketCow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rocketCowActionPerformed(evt);
+            }
+        });
 
         rocketHuman.setText("Human");
         rocketHuman.addActionListener(new java.awt.event.ActionListener() {
@@ -233,9 +252,19 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        rocketSavage.setText("Savage");
+        rocketSavage.setText("Savage(H)");
+        rocketSavage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rocketSavageActionPerformed(evt);
+            }
+        });
 
         rocketScientist.setText("Scientist");
+        rocketScientist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rocketScientistActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout rocketPanelLayout = new javax.swing.GroupLayout(rocketPanel);
         rocketPanel.setLayout(rocketPanelLayout);
@@ -243,24 +272,24 @@ public class View extends javax.swing.JFrame {
             rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rocketPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rocketLion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(rocketCow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rocketGrain, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(rocketLion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rocketGrain, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(rocketSavage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rocketScientist, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(rocketHuman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(rocketSavage, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(rocketHuman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rocketScientist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         rocketPanelLayout.setVerticalGroup(
             rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rocketPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rocketHuman)
-                    .addComponent(rocketGrain, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rocketGrain)
+                    .addComponent(rocketHuman))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(rocketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rocketLion)
@@ -272,8 +301,8 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Rocket:");
+        Rocket.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Rocket.setText("Rocket:");
 
         marsGrain.setText("Grain");
         marsGrain.addActionListener(new java.awt.event.ActionListener() {
@@ -303,102 +332,162 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        marsSavage.setText("Savage");
+        marsSavage.setText("Savage(H)");
+        marsSavage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marsSavageActionPerformed(evt);
+            }
+        });
 
         marsHuman.setText("Human");
+        marsHuman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marsHumanActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout earthPanel1Layout = new javax.swing.GroupLayout(earthPanel1);
-        earthPanel1.setLayout(earthPanel1Layout);
-        earthPanel1Layout.setHorizontalGroup(
-            earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(earthPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout marsPanelLayout = new javax.swing.GroupLayout(marsPanel);
+        marsPanel.setLayout(marsPanelLayout);
+        marsPanelLayout.setHorizontalGroup(
+            marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(marsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(marsGrain, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                     .addComponent(marsLion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(marsCow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(marsScientist, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                    .addComponent(marsSavage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(marsScientist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(marsSavage, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                     .addComponent(marsHuman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        earthPanel1Layout.setVerticalGroup(
-            earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(earthPanel1Layout.createSequentialGroup()
+        marsPanelLayout.setVerticalGroup(
+            marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(marsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(marsGrain)
                     .addComponent(marsHuman))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(marsLion)
                     .addComponent(marsSavage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(earthPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(marsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(marsScientist)
                     .addComponent(marsCow))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/start.png"))); // NOI18N
+
+        solutionToggle.setText("Solution");
+        solutionToggle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solutionToggleActionPerformed(evt);
+            }
+        });
+
+        buttonHint.setText("Hint");
+        buttonHint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHintActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout othersPanelLayout = new javax.swing.GroupLayout(othersPanel);
+        othersPanel.setLayout(othersPanelLayout);
+        othersPanelLayout.setHorizontalGroup(
+            othersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(othersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(solutionToggle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(buttonHint)
+                .addContainerGap())
+        );
+        othersPanelLayout.setVerticalGroup(
+            othersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(othersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(othersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(solutionToggle)
+                    .addComponent(buttonHint))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Others.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Others.setText("Others:");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(stateBG)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(earthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(rocketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(Earth)
+                        .addGap(250, 250, 250)
+                        .addComponent(Rocket)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(earthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(167, 167, 167)
+                        .addComponent(Mars)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Others)
+                        .addGap(90, 90, 90))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rocketPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(rocketTransport)
-                        .addGap(13, 13, 13)))
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(earthPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addGap(104, 104, 104))))
+                        .addGap(77, 77, 77)
+                        .addComponent(marsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                                .addComponent(othersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                                .addComponent(rocketTransport, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77))))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap(427, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(earthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(rocketTransport)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rocketPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(earthPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(13, 13, 13))
+                .addContainerGap()
+                .addComponent(stateBG)
+                .addGap(31, 31, 31)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Mars)
+                    .addComponent(Rocket)
+                    .addComponent(Others)
+                    .addComponent(Earth))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rocketPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(earthPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(marsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(othersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rocketTransport)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,100 +499,549 @@ public class View extends javax.swing.JFrame {
 
     private void rocketTransportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketTransportActionPerformed
         // TODO add your handling code here:
+        
+        //Apply controller/model checking of every panel here:
+        
+        /*
+        For copy paste references:
+        
+        //Panels:
+        earthPanel
+        rocketPanel
+        marsPanel
+        othersPanel
+        
+        //Buttons:
+        //Earth:
+        earthGrain
+        earthCow
+        earthLion
+        earthHuman
+        earthSavage
+        earthScientist
+        //Rocket:
+        rocketGrain
+        rocketCow
+        rocketLion
+        rocketHuman
+        rocketSavage
+        rocketScientist
+        //Mars:
+        marsGrain
+        marsCow
+        marsLion
+        marsHuman
+        marsSavage
+        marsScientist
+        
+        //Others:
+        rocketTransport
+        othersPanel
+        solutionToggle
+        buttonHint
+        stateBG
+        
+        */
     }//GEN-LAST:event_rocketTransportActionPerformed
 
     private void earthGrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthGrainActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
         earthGrain.setOpaque(false);
         earthGrain.setContentAreaFilled(false);
         earthGrain.setBorderPainted(false);
         earthGrain.setText("");
         
+        //Earth's color is Green, that's why the BG is Green
         rocketGrain.setOpaque(true);
         rocketGrain.setContentAreaFilled(true);
         rocketGrain.setBorderPainted(true);
         rocketGrain.setText("Grain");
+        rocketGrain.setBackground(Color.GREEN);
     }//GEN-LAST:event_earthGrainActionPerformed
 
     private void earthLionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthLionActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Lion" button of Earth to be invisible, then makes the "Lion" button on Rocket to appear.
         earthLion.setOpaque(false);
         earthLion.setContentAreaFilled(false);
         earthLion.setBorderPainted(false);
         earthLion.setText("");
         
+        //Earth's color is Green, that's why the BG is Green
         rocketLion.setOpaque(true);
         rocketLion.setContentAreaFilled(true);
         rocketLion.setBorderPainted(true);
         rocketLion.setText("Lion");
+        rocketLion.setBackground(Color.GREEN);
     }//GEN-LAST:event_earthLionActionPerformed
 
     private void earthCowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthCowActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Cow" button of Earth to be invisible, then makes the "Cow" button on Rocket to appear.
         earthCow.setOpaque(false);
         earthCow.setContentAreaFilled(false);
         earthCow.setBorderPainted(false);
         earthCow.setText("");
         
+        //Earth's color is Green, that's why the BG is Green
         rocketCow.setOpaque(true);
         rocketCow.setContentAreaFilled(true);
         rocketCow.setBorderPainted(true);
         rocketCow.setText("Cow");
+        rocketCow.setBackground(Color.GREEN);
     }//GEN-LAST:event_earthCowActionPerformed
 
     private void earthScientistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthScientistActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Scientist" button of Earth to be invisible, then makes the "Scientist" button on Rocket to appear.
         earthScientist.setOpaque(false);
         earthScientist.setContentAreaFilled(false);
         earthScientist.setBorderPainted(false);
         earthScientist.setText("");
         
+        //Earth's color is Green, that's why the BG is Green
         rocketScientist.setOpaque(true);
         rocketScientist.setContentAreaFilled(true);
         rocketScientist.setBorderPainted(true);
-        rocketScientist.setText("Cow");
+        rocketScientist.setText("Scientist");
+        rocketScientist.setBackground(Color.GREEN);
     }//GEN-LAST:event_earthScientistActionPerformed
 
     private void marsGrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsGrainActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Grain" button of Mars to be invisible, then makes the "Grain" button on Rocket to appear.
+        marsGrain.setOpaque(false);
+        marsGrain.setContentAreaFilled(false);
+        marsGrain.setBorderPainted(false);
+        marsGrain.setText("");
+        
+        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
+        rocketGrain.setOpaque(true);
+        rocketGrain.setContentAreaFilled(true);
+        rocketGrain.setBorderPainted(true);
+        rocketGrain.setText("Grain");
+        rocketGrain.setBackground(Color.YELLOW);
     }//GEN-LAST:event_marsGrainActionPerformed
 
     private void marsLionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsLionActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Lion" button of Mars to be invisible, then makes the "Lion" button on Rocket to appear.
+        marsLion.setOpaque(false);
+        marsLion.setContentAreaFilled(false);
+        marsLion.setBorderPainted(false);
+        marsLion.setText("");
+        
+        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
+        rocketLion.setOpaque(true);
+        rocketLion.setContentAreaFilled(true);
+        rocketLion.setBorderPainted(true);
+        rocketLion.setText("Lion");
+        rocketLion.setBackground(Color.YELLOW);
     }//GEN-LAST:event_marsLionActionPerformed
 
     private void marsCowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsCowActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Cow" button of Mars to be invisible, then makes the "Cow" button on Rocket to appear.
+        marsCow.setOpaque(false);
+        marsCow.setContentAreaFilled(false);
+        marsCow.setBorderPainted(false);
+        marsCow.setText("");
+        
+        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
+        rocketCow.setOpaque(true);
+        rocketCow.setContentAreaFilled(true);
+        rocketCow.setBorderPainted(true);
+        rocketCow.setText("Cow");
+        rocketCow.setBackground(Color.YELLOW);
     }//GEN-LAST:event_marsCowActionPerformed
 
     private void marsScientistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsScientistActionPerformed
         // TODO add your handling code here:
+        
+        //This logic sets the "Scientist" button of Mars to be invisible, then makes the "Scientist" button on Rocket to appear.
+        marsScientist.setOpaque(false);
+        marsScientist.setContentAreaFilled(false);
+        marsScientist.setBorderPainted(false);
+        marsScientist.setText("");
+        
+        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
+        rocketScientist.setOpaque(true);
+        rocketScientist.setContentAreaFilled(true);
+        rocketScientist.setBorderPainted(true);
+        rocketScientist.setText("Scientist");
+        rocketScientist.setBackground(Color.YELLOW);
     }//GEN-LAST:event_marsScientistActionPerformed
 
     private void rocketHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketHumanActionPerformed
         // TODO add your handling code here:
+        
+        //Save the BG Color of current Grain button here.
+        Color c = rocketHuman.getBackground();
+        
+        //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
+        if(c.equals(Color.GREEN)){
+            
+            //This logic sets the "Human" button of Earth to be visible, then makes the "Human" button on Rocket to disappear.
+            rocketHuman.setOpaque(false);
+            rocketHuman.setContentAreaFilled(false);
+            rocketHuman.setBorderPainted(false);
+            rocketHuman.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketHuman.setBackground(solutionToggle.getBackground());
+
+            earthHuman.setOpaque(true);
+            earthHuman.setContentAreaFilled(true);
+            earthHuman.setBorderPainted(true);
+            earthHuman.setText("Human");
+        }
+        else if(c.equals(Color.YELLOW)){
+        
+            //This logic sets the "Human" button of Mars to be visible, then makes the "Human" button on Rocket to disappear.
+            rocketHuman.setOpaque(false);
+            rocketHuman.setContentAreaFilled(false);
+            rocketHuman.setBorderPainted(false);
+            rocketHuman.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketHuman.setBackground(solutionToggle.getBackground());
+
+            earthHuman.setOpaque(true);
+            earthHuman.setContentAreaFilled(true);
+            earthHuman.setBorderPainted(true);
+            earthHuman.setText("Human");
+        }
     }//GEN-LAST:event_rocketHumanActionPerformed
+
+    private void solutionToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solutionToggleActionPerformed
+        // TODO add your handling code here:
+        if(solutionToggle.isSelected())
+            stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/statemapsolution.png")));
+        else 
+            stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/start.png")));
+            
+    }//GEN-LAST:event_solutionToggleActionPerformed
+
+    private void buttonHintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHintActionPerformed
+        // TODO add your handling code here:
+        
+        //Idea here is to disable it when one ViewHint window is opened.
+        //We can disable it muna up until user clicks "Back to Game" in the other frame
+        //buttonHint.setEnabled(false);
+        
+        //Opening new frame called "HintView" to view the hint.
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new HintView().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_buttonHintActionPerformed
+
+    private void earthHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthHumanActionPerformed
+        // TODO add your handling code here:
+        
+        //This logic sets the "Human" button of Earth to be invisible, then makes the "Human" button on Rocket to appear.
+        earthHuman.setOpaque(false);
+        earthHuman.setContentAreaFilled(false);
+        earthHuman.setBorderPainted(false);
+        earthHuman.setText("");
+        
+        //Earth's color is Green, that's why the BG is Green
+        rocketHuman.setOpaque(true);
+        rocketHuman.setContentAreaFilled(true);
+        rocketHuman.setBorderPainted(true);
+        rocketHuman.setText("Human");
+        rocketHuman.setBackground(Color.GREEN);
+    }//GEN-LAST:event_earthHumanActionPerformed
+
+    private void earthSavageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthSavageActionPerformed
+        // TODO add your handling code here:
+        
+        //This logic sets the "Savage" button of Earth to be invisible, then makes the "Savage" button on Rocket to appear.
+        earthSavage.setOpaque(false);
+        earthSavage.setContentAreaFilled(false);
+        earthSavage.setBorderPainted(false);
+        earthSavage.setText("");
+        
+        //Earth's color is Green, that's why the BG is Green
+        rocketSavage.setOpaque(true);
+        rocketSavage.setContentAreaFilled(true);
+        rocketSavage.setBorderPainted(true);
+        rocketSavage.setText("Savage(H)");
+        rocketSavage.setBackground(Color.GREEN);
+    }//GEN-LAST:event_earthSavageActionPerformed
+
+    private void rocketGrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketGrainActionPerformed
+        // TODO add your handling code here.
+        
+        //Save the BG Color of current Grain button here.
+        Color c = rocketGrain.getBackground();
+        
+        //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
+        if(c.equals(Color.GREEN)){
+            
+            //This logic sets the "Grain" button of Earth to be visible, then makes the "Grain" button on Rocket to disappear.
+            rocketGrain.setOpaque(false);
+            rocketGrain.setContentAreaFilled(false);
+            rocketGrain.setBorderPainted(false);
+            rocketGrain.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketGrain.setBackground(solutionToggle.getBackground());
+
+            earthGrain.setOpaque(true);
+            earthGrain.setContentAreaFilled(true);
+            earthGrain.setBorderPainted(true);
+            earthGrain.setText("Grain");
+        }
+        else if(c.equals(Color.YELLOW)){
+        
+            //This logic sets the "Grain" button of Mars to be visible, then makes the "Grain" button on Rocket to disappear.
+            rocketGrain.setOpaque(false);
+            rocketGrain.setContentAreaFilled(false);
+            rocketGrain.setBorderPainted(false);
+            rocketGrain.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketGrain.setBackground(solutionToggle.getBackground());
+
+            earthGrain.setOpaque(true);
+            earthGrain.setContentAreaFilled(true);
+            earthGrain.setBorderPainted(true);
+            earthGrain.setText("Grain");
+        }
+    }//GEN-LAST:event_rocketGrainActionPerformed
+
+    private void marsHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsHumanActionPerformed
+        // TODO add your handling code here:
+        
+        //This logic sets the "Human" button of Mars to be invisible, then makes the "Human" button on Rocket to appear.
+        marsHuman.setOpaque(false);
+        marsHuman.setContentAreaFilled(false);
+        marsHuman.setBorderPainted(false);
+        marsHuman.setText("");
+        
+        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
+        rocketHuman.setOpaque(true);
+        rocketHuman.setContentAreaFilled(true);
+        rocketHuman.setBorderPainted(true);
+        rocketHuman.setText("Human");
+        rocketHuman.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_marsHumanActionPerformed
+
+    private void marsSavageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsSavageActionPerformed
+        // TODO add your handling code here:
+        
+        //This logic sets the "Savage" button of Mars to be invisible, then makes the "Savage" button on Rocket to appear.
+        marsCow.setOpaque(false);
+        marsCow.setContentAreaFilled(false);
+        marsCow.setBorderPainted(false);
+        marsCow.setText("");
+        
+        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
+        rocketCow.setOpaque(true);
+        rocketCow.setContentAreaFilled(true);
+        rocketCow.setBorderPainted(true);
+        rocketCow.setText("Savage(H)");
+        rocketCow.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_marsSavageActionPerformed
+
+    private void rocketLionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketLionActionPerformed
+        // TODO add your handling code here:
+        
+        //Save the BG Color of current Grain button here.
+        Color c = rocketLion.getBackground();
+        
+        //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
+        if(c.equals(Color.GREEN)){
+            
+            //This logic sets the "Lion" button of Earth to be visible, then makes the "Lion" button on Rocket to disappear.
+            rocketLion.setOpaque(false);
+            rocketLion.setContentAreaFilled(false);
+            rocketLion.setBorderPainted(false);
+            rocketLion.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketLion.setBackground(solutionToggle.getBackground());
+
+            earthLion.setOpaque(true);
+            earthLion.setContentAreaFilled(true);
+            earthLion.setBorderPainted(true);
+            earthLion.setText("Lion");
+        }
+        else if(c.equals(Color.YELLOW)){
+        
+            //This logic sets the "Lion" button of Mars to be visible, then makes the "Lion" button on Rocket to disappear.
+            rocketLion.setOpaque(false);
+            rocketLion.setContentAreaFilled(false);
+            rocketLion.setBorderPainted(false);
+            rocketLion.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketLion.setBackground(solutionToggle.getBackground());
+
+            earthLion.setOpaque(true);
+            earthLion.setContentAreaFilled(true);
+            earthLion.setBorderPainted(true);
+            earthLion.setText("Lion");
+        }
+    }//GEN-LAST:event_rocketLionActionPerformed
+
+    private void rocketCowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketCowActionPerformed
+        // TODO add your handling code here:
+        
+        //Save the BG Color of current Grain button here.
+        Color c = rocketCow.getBackground();
+        
+        //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
+        if(c.equals(Color.GREEN)){
+            
+            //This logic sets the "Cow" button of Earth to be visible, then makes the "Cow" button on Rocket to disappear.
+            rocketCow.setOpaque(false);
+            rocketCow.setContentAreaFilled(false);
+            rocketCow.setBorderPainted(false);
+            rocketCow.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketCow.setBackground(solutionToggle.getBackground());
+
+            earthCow.setOpaque(true);
+            earthCow.setContentAreaFilled(true);
+            earthCow.setBorderPainted(true);
+            earthCow.setText("Cow");
+        }
+        else if(c.equals(Color.YELLOW)){
+        
+            //This logic sets the "Cow" button of Mars to be visible, then makes the "Cow" button on Rocket to disappear.
+            rocketCow.setOpaque(false);
+            rocketCow.setContentAreaFilled(false);
+            rocketCow.setBorderPainted(false);
+            rocketCow.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketCow.setBackground(solutionToggle.getBackground());
+
+            earthCow.setOpaque(true);
+            earthCow.setContentAreaFilled(true);
+            earthCow.setBorderPainted(true);
+            earthCow.setText("Cow");
+        }
+    }//GEN-LAST:event_rocketCowActionPerformed
+
+    private void rocketSavageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketSavageActionPerformed
+        // TODO add your handling code here:
+        
+        //Save the BG Color of current Grain button here.
+        Color c = rocketSavage.getBackground();
+        
+        //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
+        if(c.equals(Color.GREEN)){
+            
+            //This logic sets the "Savage" button of Earth to be visible, then makes the "Savage" button on Rocket to disappear.
+            rocketSavage.setOpaque(false);
+            rocketSavage.setContentAreaFilled(false);
+            rocketSavage.setBorderPainted(false);
+            rocketSavage.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketSavage.setBackground(solutionToggle.getBackground());
+
+            earthSavage.setOpaque(true);
+            earthSavage.setContentAreaFilled(true);
+            earthSavage.setBorderPainted(true);
+            earthSavage.setText("Savage(H)");
+        }
+        else if(c.equals(Color.YELLOW)){
+        
+            //This logic sets the "Savage" button of Mars to be visible, then makes the "Savage" button on Rocket to disappear.
+            rocketSavage.setOpaque(false);
+            rocketSavage.setContentAreaFilled(false);
+            rocketSavage.setBorderPainted(false);
+            rocketSavage.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketSavage.setBackground(solutionToggle.getBackground());
+
+            earthSavage.setOpaque(true);
+            earthSavage.setContentAreaFilled(true);
+            earthSavage.setBorderPainted(true);
+            earthSavage.setText("Savage(H)");
+        }
+    }//GEN-LAST:event_rocketSavageActionPerformed
+
+    private void rocketScientistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketScientistActionPerformed
+        // TODO add your handling code here:
+        
+        //Save the BG Color of current Grain button here.
+        Color c = rocketScientist.getBackground();
+        
+        //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
+        if(c.equals(Color.GREEN)){
+            
+            //This logic sets the "Scientist" button of Earth to be visible, then makes the "Scientist" button on Rocket to disappear.
+            rocketScientist.setOpaque(false);
+            rocketScientist.setContentAreaFilled(false);
+            rocketScientist.setBorderPainted(false);
+            rocketScientist.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketScientist.setBackground(solutionToggle.getBackground());
+
+            earthScientist.setOpaque(true);
+            earthScientist.setContentAreaFilled(true);
+            earthScientist.setBorderPainted(true);
+            earthScientist.setText("Scientist");
+        }
+        else if(c.equals(Color.YELLOW)){
+        
+            //This logic sets the "Scientist" button of Mars to be visible, then makes the "Scientist" button on Rocket to disappear.
+            rocketScientist.setOpaque(false);
+            rocketScientist.setContentAreaFilled(false);
+            rocketScientist.setBorderPainted(false);
+            rocketScientist.setText("");
+            
+            //Reverts the BG of the button back to default.
+            rocketScientist.setBackground(solutionToggle.getBackground());
+
+            earthScientist.setOpaque(true);
+            earthScientist.setContentAreaFilled(true);
+            earthScientist.setBorderPainted(true);
+            earthScientist.setText("Scientist");
+        }
+    }//GEN-LAST:event_rocketScientistActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Earth;
+    private javax.swing.JLabel Mars;
+    private javax.swing.JLabel Others;
+    private javax.swing.JLabel Rocket;
+    private javax.swing.JButton buttonHint;
     private javax.swing.JButton earthCow;
     private javax.swing.JButton earthGrain;
     private javax.swing.JButton earthHuman;
     private javax.swing.JButton earthLion;
     private javax.swing.JPanel earthPanel;
-    private javax.swing.JPanel earthPanel1;
     private javax.swing.JButton earthSavage;
     private javax.swing.JButton earthScientist;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton marsCow;
     private javax.swing.JButton marsGrain;
     private javax.swing.JButton marsHuman;
     private javax.swing.JButton marsLion;
+    private javax.swing.JPanel marsPanel;
     private javax.swing.JButton marsSavage;
     private javax.swing.JButton marsScientist;
+    private javax.swing.JPanel othersPanel;
     private javax.swing.JButton rocketCow;
     private javax.swing.JButton rocketGrain;
     private javax.swing.JButton rocketHuman;
@@ -512,5 +1050,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton rocketSavage;
     private javax.swing.JButton rocketScientist;
     private javax.swing.JButton rocketTransport;
+    private javax.swing.JToggleButton solutionToggle;
+    private javax.swing.JLabel stateBG;
     // End of variables declaration//GEN-END:variables
 }
