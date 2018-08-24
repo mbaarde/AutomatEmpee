@@ -24,10 +24,10 @@ public class Model {
         this.Earth = new ArrayList<String>();
         this.Mars = new ArrayList<String>();
         this.spaceship = new ArrayList<String>();
-        this.entities = new String[] {"Savage", "Cow", "Lion", "Grain", "Human", "Scientist"};
+        this.entities = new String[] {"Erectus", "Cow", "Lion", "Grain", "Human", "Scientist"};
         
         //initialize all entities to earth at the start
-        Earth.add("Savage");
+        Earth.add("Erectus");
         Earth.add("Cow");
         Earth.add("Lion");
         Earth.add("Grain");

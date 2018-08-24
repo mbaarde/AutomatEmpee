@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class View extends javax.swing.JFrame {
     
     private int ctr = 0;
-    
+    private BFS bfs;
     //assume user's starting position is at 0 (on Earth with no moves)
     private int pos = 0;
     
@@ -29,11 +29,11 @@ public class View extends javax.swing.JFrame {
             transitionStatement += tempship.get(i).charAt(0);
         }
         
-        if(spaceship.contains("Scientist")){
-            if(pos == 0 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S")){
-                System.out.println("Current Pos: " + pos);
-                System.out.println("Transition Statement: " + tempnode.get(pos + 1).getNodeLabel());
-                System.out.println("Next Pos: " + pos + 1);
+        if(tempship.contains("Scientist")){
+            if(pos == 0 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CLS");
+                System.out.println("Current Pos: " + 1);
                 stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000111.png")));
                 
                 marsCow.setOpaque(true);
@@ -67,28 +67,1773 @@ public class View extends javax.swing.JFrame {
                 
                 pos++;
                 
-            }else if(pos == 1 && transitionStatement.contains("C") && transitionStatement.contains("S")){
-                System.out.println("Current Pos: " + pos);
-                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
-                System.out.println("Next Pos: " + pos + 1);
-                pos++;
-            }else if(pos == 1 && transitionStatement.contains("L") && transitionStatement.contains("S")){
-                System.out.println("Current Pos: " + pos);
-                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
-                System.out.println("Next Pos: " + 7);
+            }else if(pos == 1 && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CS");
+                System.out.println("Current Pos: " + 2);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000010.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 2;
+            }else if(pos == 1 && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("C") && !transitionStatement.contains("H") && !transitionStatement.contains("G")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "LS");
+                System.out.println("Current Pos: " + 7);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000100.png")));
+                
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
                 pos = 7;
-            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("G") && transitionStatement.contains("S")){
-                System.out.println("Current Pos: " + pos);
-                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
-                System.out.println("Next Pos: " + pos + 1);
-                pos++;
-            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("H") && transitionStatement.contains("S")){
-                System.out.println("Current Pos: " + pos);
-                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
-                System.out.println("Next Pos: " + 11);
+            } else if(pos == 1 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CLS");
+                System.out.println("Current Pos: " + 0);
+                pos = 0;
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/start.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+            }else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CS");
+                System.out.println("Current Pos: " + 1);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 1;
+            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("G") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CGS");
+                System.out.println("Current Pos: " + 3);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/001111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsGrain.setOpaque(true);
+                marsGrain.setContentAreaFilled(true);
+                marsGrain.setBorderPainted(true);
+                marsGrain.setText("Grain");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 3;
+            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("H") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CHS");
+                System.out.println("Current Pos: " + 11);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
                 pos = 11;
+            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CHS");
+                System.out.println("Current Pos: " + 11);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage(H)");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 11;
+            }else if(pos == 3 && transitionStatement.contains("C") && transitionStatement.contains("G") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CGS");
+                System.out.println("Current Pos: " + 2);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000010.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthGrain.setOpaque(true);
+                earthGrain.setContentAreaFilled(true);
+                earthGrain.setBorderPainted(true);
+                earthGrain.setText("Grain");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 2;
+            }else if(pos == 3 && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CS");
+                System.out.println("Current Pos: " + 4);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/001010.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 4;
+            }else if(pos == 3 && transitionStatement.contains("G") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("H") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "GLS");
+                System.out.println("Current Pos: " + 7);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000100.png")));
+                
+                earthGrain.setOpaque(true);
+                earthGrain.setContentAreaFilled(true);
+                earthGrain.setBorderPainted(true);
+                earthGrain.setText("Grain");
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 7;
+            }else if(pos == 4 && transitionStatement.contains("H") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("G") && !transitionStatement.contains("C") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HHS");
+                System.out.println("Current Pos: " + 5);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111011.png")));
+                
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage(H)");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 5;
+            }else if(pos == 4 && transitionStatement.contains("C") && transitionStatement.contains("H") && transitionStatement.contains("S") && !transitionStatement.contains("G") && !transitionStatement.contains("E") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CHS");
+                System.out.println("Current Pos: " + 13);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011111.png")));
+                
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 13;
+            }else if(pos == 4 && transitionStatement.contains("C") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("G") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CHS");
+                System.out.println("Current Pos: " + 13);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011111.png")));
+                
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage(H)");
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 13;
+            }else if(pos == 4 && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CS");
+                System.out.println("Current Pos: " + 3);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/001111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 3;
+            }else if(pos == 7 && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "LS");
+                System.out.println("Current Pos: " + 1);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000111.png")));
+                
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 1;
+            }else if(pos == 7 && transitionStatement.contains("L") && transitionStatement.contains("G") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("H") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "LGS");
+                System.out.println("Current Pos: " + 3);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/001111.png")));
+                
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsGrain.setOpaque(true);
+                marsGrain.setContentAreaFilled(true);
+                marsGrain.setBorderPainted(true);
+                marsGrain.setText("Grain");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 3;
+            }else if(pos == 7 && transitionStatement.contains("L") && transitionStatement.contains("H") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HLS");
+                System.out.println("Current Pos: " + 11);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010111.png")));
+                
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 11;
+            }else if(pos == 7 && transitionStatement.contains("L") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HLS");
+                System.out.println("Current Pos: " + 11);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010111.png")));
+                
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Savage(H)");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 11;
+            }else if(pos == 7 && transitionStatement.contains("H") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("L") && !transitionStatement.contains("G") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HHS");
+                System.out.println("Current Pos: " + 8);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110101.png")));
+                
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage(H)");
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 8;
+            }else if(pos == 11 && transitionStatement.contains("C") && transitionStatement.contains("H") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CHS");
+                System.out.println("Current Pos: " + 2);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000010.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 2;
+            }else if(pos == 11 && transitionStatement.contains("C") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("L")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CHS");
+                System.out.println("Current Pos: " + 2);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000010.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage(H)");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 2;
+            }else if(pos == 11 && transitionStatement.contains("L") && transitionStatement.contains("H") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "LHS");
+                System.out.println("Current Pos: " + 7);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000100.png")));
+                
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Cow");
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 7;
+            }else if(pos == 11 && transitionStatement.contains("L") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "LHS");
+                System.out.println("Current Pos: " + 7);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000100.png")));
+                
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Cow");
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 7;
+            }else if(pos == 11 && transitionStatement.contains("L") && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("H")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "LCS");
+                System.out.println("Current Pos: " + 12);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010000.png")));
+                
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 12;
+            }else if(pos == 12 && transitionStatement.contains("H") && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("L") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HCS");
+                System.out.println("Current Pos: " + 8);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110101.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 8;
+            }else if(pos == 12 && transitionStatement.contains("E") && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("L") && !transitionStatement.contains("G") && !transitionStatement.contains("H")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HCS");
+                System.out.println("Current Pos: " + 8);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110101.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 8;
+            }else if(pos == 12 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CLS");
+                System.out.println("Current Pos: " + 11);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 11;
+            }else if(pos == 8 && transitionStatement.contains("H") && transitionStatement.contains("E") && transitionStatement.contains("S") && !transitionStatement.contains("G") && !transitionStatement.contains("L") && !transitionStatement.contains("C")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HHS");
+                System.out.println("Current Pos: " + 7);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000100.png")));
+                
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 7;
+            }else if(pos == 8 && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("E") && !transitionStatement.contains("G") && !transitionStatement.contains("L") && !transitionStatement.contains("H")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "CS");
+                System.out.println("Current Pos: " + 9);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110000.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 9;
+            }else if(pos == 8 && transitionStatement.contains("H") && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("G") && !transitionStatement.contains("L") && !transitionStatement.contains("E")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HCS");
+                System.out.println("Current Pos: " + 12);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010000.png")));
+                
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 12;
+            }else if(pos == 8 && transitionStatement.contains("E") && transitionStatement.contains("C") && transitionStatement.contains("S") && !transitionStatement.contains("G") && !transitionStatement.contains("L") && !transitionStatement.contains("H")){
+                System.out.println("Previous Pos: " + pos);
+                System.out.println("Transition Statement: " + "HCS");
+                System.out.println("Current Pos: " + 12);
+                
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/010000.png")));
+                
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage(H)");
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 12;
+            }else if(pos == 14 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 13;
+                
+            }
+            else if(pos == 14 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && transitionStatement.contains("H") && !transitionStatement.contains("G")&& !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111011.png")));
+                
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 5;
+                
+            }
+            else if(pos == 14 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G")&& transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111011.png")));
+                
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage(H)");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 5;
+                
+            }
+            else if(pos == 14 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111101.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsHuman.setOpaque(true);
+                marsHuman.setContentAreaFilled(true);
+                marsHuman.setBorderPainted(true);
+                marsHuman.setText("Human");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 10;
+                
+            }
+            else if(pos == 14 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111101.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsSavage.setOpaque(true);
+                marsSavage.setContentAreaFilled(true);
+                marsSavage.setBorderPainted(true);
+                marsSavage.setText("Savage(H)");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 10;
+                
+            }
+            else if(pos == 5 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011000.png")));
+                
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 14;
+                
+            }
+            else if(pos == 5 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011000.png")));
+                
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage(H)");
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 14;
+                
+            }
+            else if(pos == 5 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111000.png")));
+                
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 6;
+                
+            }
+            else if(pos == 5 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110000.png")));
+                
+                earthGrain.setOpaque(true);
+                earthGrain.setContentAreaFilled(true);
+                earthGrain.setBorderPainted(true);
+                earthGrain.setText("Grain");
+                earthLion.setOpaque(true);
+                earthLion.setContentAreaFilled(true);
+                earthLion.setBorderPainted(true);
+                earthLion.setText("Lion");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 9;
+                
+            }
+            else if(pos == 5 && !transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && transitionStatement.contains("H") && !transitionStatement.contains("G")& transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/001010.png")));
+                
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage(H)");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 4;
+                
+            }
+            else if(pos == 9 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110101.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 8;
+                
+            }
+            else if(pos == 9 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111101.png")));
+                
+                marsGrain.setOpaque(true);
+                marsGrain.setContentAreaFilled(true);
+                marsGrain.setBorderPainted(true);
+                marsGrain.setText("Grain");
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 10;
+                
+            }
+            else if(pos == 9 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111011.png")));
+                
+                marsGrain.setOpaque(true);
+                marsGrain.setContentAreaFilled(true);
+                marsGrain.setBorderPainted(true);
+                marsGrain.setText("Grain");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 5;
+                
+            }
+            else if(pos == 10 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/110000.png")));
+                
+                earthGrain.setOpaque(true);
+                earthGrain.setContentAreaFilled(true);
+                earthGrain.setBorderPainted(true);
+                earthGrain.setText("Grain");
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketGrain.setOpaque(false);
+                rocketGrain.setContentAreaFilled(false);
+                rocketGrain.setBorderPainted(false);
+                rocketGrain.setText("");
+                rocketGrain.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 9;
+                
+            }
+            else if(pos == 10 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011000.png")));
+                
+                earthHuman.setOpaque(true);
+                earthHuman.setContentAreaFilled(true);
+                earthHuman.setBorderPainted(true);
+                earthHuman.setText("Human");
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketHuman.setOpaque(false);
+                rocketHuman.setContentAreaFilled(false);
+                rocketHuman.setBorderPainted(false);
+                rocketHuman.setText("");
+                rocketHuman.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 14;
+                
+            }
+            else if(pos == 10 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/011000.png")));
+                
+                earthSavage.setOpaque(true);
+                earthSavage.setContentAreaFilled(true);
+                earthSavage.setBorderPainted(true);
+                earthSavage.setText("Savage(H)");
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketSavage.setOpaque(false);
+                rocketSavage.setContentAreaFilled(false);
+                rocketSavage.setBorderPainted(false);
+                rocketSavage.setText("");
+                rocketSavage.setBackground(rocketTransport.getBackground());
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 14;
+                
+            }
+            else if(pos == 10 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111000.png")));
+                
+                earthCow.setOpaque(true);
+                earthCow.setContentAreaFilled(true);
+                earthCow.setBorderPainted(true);
+                earthCow.setText("Cow");
+                earthScientist.setOpaque(true);
+                earthScientist.setContentAreaFilled(true);
+                earthScientist.setBorderPainted(true);
+                earthScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 6;
+                
+            }
+            else if(pos == 6 && !transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111011.png")));
+
+
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 5;
+                
+            }
+            else if(pos == 6 && transitionStatement.contains("C") && !transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/111101.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 10;
+                
+            }
+            else if(pos == 6 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S") && !transitionStatement.contains("H") && !transitionStatement.contains("G") && !transitionStatement.contains("E")){
+                System.out.println("Current Pos: " + pos);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/win.png")));
+
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos = 15;
+                JOptionPane.showMessageDialog(null, "YOU HAVE WONNED", "CONGRATULATIONS", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "YOU HAVE LOSS", "xD", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
             }
         }
+        
+        tempship.clear();
     }
     
     public void board (ArrayList<String> origin, String entity) {
@@ -894,10 +2639,10 @@ public class View extends javax.swing.JFrame {
 
     private void solutionToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solutionToggleActionPerformed
         // TODO add your handling code here:
-        if(solutionToggle.isSelected())
+        if(solutionToggle.isSelected()){
+            bfs = new BFS(model);
             stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/statemapsolution.png")));
-            
-        else 
+        }else 
             stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/start.png")));
             
     }//GEN-LAST:event_solutionToggleActionPerformed
@@ -944,7 +2689,7 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
         
        if(model.getSpaceship().size() < 3){
-            this.board(model.getEarth(), "Savage");
+            this.board(model.getEarth(), "Erectus");
             //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
             earthSavage.setOpaque(false);
             earthSavage.setContentAreaFilled(false);
@@ -955,7 +2700,7 @@ public class View extends javax.swing.JFrame {
             rocketSavage.setOpaque(true);
             rocketSavage.setContentAreaFilled(true);
             rocketSavage.setBorderPainted(true);
-            rocketSavage.setText("Savage");
+            rocketSavage.setText("Savage(H)");
             rocketSavage.setBackground(Color.GREEN);
         }else{
             JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
@@ -1033,7 +2778,7 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if(model.getSpaceship().size() < 3){
-            this.board(model.getMars(), "Savage");
+            this.board(model.getMars(), "Erectus");
             //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
             marsSavage.setOpaque(false);
             marsSavage.setContentAreaFilled(false);
@@ -1148,7 +2893,7 @@ public class View extends javax.swing.JFrame {
         Color c = rocketSavage.getBackground();
         
         System.out.println(model.getSpaceship());
-        model.getSpaceship().remove("Savage");
+        model.getSpaceship().remove("Erectus");
         System.out.println(model.getSpaceship());
         
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.

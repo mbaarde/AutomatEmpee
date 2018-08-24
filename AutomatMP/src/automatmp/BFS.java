@@ -17,15 +17,15 @@ public final class BFS {
 	Model model;
 	ArrayList<ArrayList<Node>> solutionVisitedNodes;
 	ArrayList<ArrayList<String>> solutionInputs;
-	ArrayList<ArrayList<Node>> lowestSolutionVisitedNodes;
-	ArrayList<ArrayList<String>> lowestSolutionInputs;
+	ArrayList<ArrayList<Node>> leastStepsVisitedNodes;
+	ArrayList<ArrayList<String>> leastStepsInputs;
 	
 	public BFS(Model model) {
 		this.model = model;
 		solutionVisitedNodes = new ArrayList<>();
 		solutionInputs = new ArrayList<>();
-		lowestSolutionVisitedNodes = new ArrayList<>();
-		lowestSolutionInputs = new ArrayList<>();
+		leastStepsVisitedNodes = new ArrayList<>();
+		leastStepsInputs = new ArrayList<>();
 		Node initNode = model.getNodes().get(0);
 		ArrayList<Node> visited = new ArrayList<>();
 		visited.add(initNode);
@@ -39,8 +39,8 @@ public final class BFS {
 		}
 		for(int i = 0 ; i < solutionInputs.size() ; i++) {
 			if(lowestMove == solutionInputs.get(i).size()) {
-				lowestSolutionVisitedNodes.add(solutionVisitedNodes.get(i));
-				lowestSolutionInputs.add(solutionInputs.get(i));
+				leastStepsVisitedNodes.add(solutionVisitedNodes.get(i));
+				leastStepsInputs.add(solutionInputs.get(i));
 			}
 		}
 	}
