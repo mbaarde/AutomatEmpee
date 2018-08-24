@@ -6,17 +6,35 @@
 package automatmp;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author admin
  */
 public class View extends javax.swing.JFrame {
-
+    
+    private int ctr = 0;
+    
+    public void board (ArrayList<String> origin, String entity) {
+        
+        if (model.getSpaceship().size() < 3){
+            origin.remove(entity);
+            model.getSpaceship().add(entity);
+            System.out.println("Added " + entity + " at index " + model.getSpaceship().size());
+        } 
+        else if (model.getSpaceship().size() == 3)
+            System.out.println("Spaceship is full!");
+       
+    }
+    
+    private Model model;
     /**
      * Creates new form View
      */
-    public View() {
+    public View(Model m) {
+        model = m;
         initComponents();
         inviRocketMars();
     }
@@ -34,31 +52,37 @@ public class View extends javax.swing.JFrame {
         marsGrain.setContentAreaFilled(false);
         marsGrain.setBorderPainted(false);
         marsGrain.setText("");
+        marsGrain.setEnabled(false);
         
         marsCow.setOpaque(false);
         marsCow.setContentAreaFilled(false);
         marsCow.setBorderPainted(false);
         marsCow.setText("");
+        marsCow.setEnabled(false);
         
         marsLion.setOpaque(false);
         marsLion.setContentAreaFilled(false);
         marsLion.setBorderPainted(false);
         marsLion.setText("");
+        marsLion.setEnabled(false);
         
         marsHuman.setOpaque(false);
         marsHuman.setContentAreaFilled(false);
         marsHuman.setBorderPainted(false);
         marsHuman.setText("");
+        marsHuman.setEnabled(false);
         
         marsSavage.setOpaque(false);
         marsSavage.setContentAreaFilled(false);
         marsSavage.setBorderPainted(false);
         marsSavage.setText("");
+        marsSavage.setEnabled(false);
         
         marsScientist.setOpaque(false);
         marsScientist.setContentAreaFilled(false);
         marsScientist.setBorderPainted(false);
         marsScientist.setText("");
+        marsScientist.setEnabled(false);
         
         //Rocket
         rocketGrain.setOpaque(false);
@@ -500,6 +524,38 @@ public class View extends javax.swing.JFrame {
     private void rocketTransportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketTransportActionPerformed
         // TODO add your handling code here:
         
+        ctr++;
+        
+        if(ctr%2 == 1){
+            earthGrain.setEnabled(false);
+            earthLion.setEnabled(false);
+            earthCow.setEnabled(false);
+            earthSavage.setEnabled(false);
+            earthHuman.setEnabled(false);
+            earthScientist.setEnabled(false);
+            
+            marsGrain.setEnabled(true);
+            marsLion.setEnabled(true);
+            marsCow.setEnabled(true);
+            marsSavage.setEnabled(true);
+            marsHuman.setEnabled(true);
+            marsScientist.setEnabled(true);
+        } else if(ctr%2 == 0){
+            earthGrain.setEnabled(true);
+            earthLion.setEnabled(true);
+            earthCow.setEnabled(true);
+            earthSavage.setEnabled(true);
+            earthHuman.setEnabled(true);
+            earthScientist.setEnabled(true);
+            
+            marsGrain.setEnabled(false);
+            marsLion.setEnabled(false);
+            marsCow.setEnabled(false);
+            marsSavage.setEnabled(false);
+            marsHuman.setEnabled(false);
+            marsScientist.setEnabled(false);
+        }
+        
         //Apply controller/model checking of every panel here:
         
         /*
@@ -546,138 +602,172 @@ public class View extends javax.swing.JFrame {
 
     private void earthGrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthGrainActionPerformed
         // TODO add your handling code here:
-        
-        //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
-        earthGrain.setOpaque(false);
-        earthGrain.setContentAreaFilled(false);
-        earthGrain.setBorderPainted(false);
-        earthGrain.setText("");
-        
-        //Earth's color is Green, that's why the BG is Green
-        rocketGrain.setOpaque(true);
-        rocketGrain.setContentAreaFilled(true);
-        rocketGrain.setBorderPainted(true);
-        rocketGrain.setText("Grain");
-        rocketGrain.setBackground(Color.GREEN);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getEarth(), "Grain");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            earthGrain.setOpaque(false);
+            earthGrain.setContentAreaFilled(false);
+            earthGrain.setBorderPainted(false);
+            earthGrain.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketGrain.setOpaque(true);
+            rocketGrain.setContentAreaFilled(true);
+            rocketGrain.setBorderPainted(true);
+            rocketGrain.setText("Grain");
+            rocketGrain.setBackground(Color.GREEN);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_earthGrainActionPerformed
 
     private void earthLionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthLionActionPerformed
         // TODO add your handling code here:
-        
-        //This logic sets the "Lion" button of Earth to be invisible, then makes the "Lion" button on Rocket to appear.
-        earthLion.setOpaque(false);
-        earthLion.setContentAreaFilled(false);
-        earthLion.setBorderPainted(false);
-        earthLion.setText("");
-        
-        //Earth's color is Green, that's why the BG is Green
-        rocketLion.setOpaque(true);
-        rocketLion.setContentAreaFilled(true);
-        rocketLion.setBorderPainted(true);
-        rocketLion.setText("Lion");
-        rocketLion.setBackground(Color.GREEN);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getEarth(), "Lion");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            earthLion.setOpaque(false);
+            earthLion.setContentAreaFilled(false);
+            earthLion.setBorderPainted(false);
+            earthLion.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketLion.setOpaque(true);
+            rocketLion.setContentAreaFilled(true);
+            rocketLion.setBorderPainted(true);
+            rocketLion.setText("Lion");
+            rocketLion.setBackground(Color.GREEN);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_earthLionActionPerformed
 
     private void earthCowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthCowActionPerformed
         // TODO add your handling code here:
-        
-        //This logic sets the "Cow" button of Earth to be invisible, then makes the "Cow" button on Rocket to appear.
-        earthCow.setOpaque(false);
-        earthCow.setContentAreaFilled(false);
-        earthCow.setBorderPainted(false);
-        earthCow.setText("");
-        
-        //Earth's color is Green, that's why the BG is Green
-        rocketCow.setOpaque(true);
-        rocketCow.setContentAreaFilled(true);
-        rocketCow.setBorderPainted(true);
-        rocketCow.setText("Cow");
-        rocketCow.setBackground(Color.GREEN);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getEarth(), "Cow");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            earthCow.setOpaque(false);
+            earthCow.setContentAreaFilled(false);
+            earthCow.setBorderPainted(false);
+            earthCow.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketCow.setOpaque(true);
+            rocketCow.setContentAreaFilled(true);
+            rocketCow.setBorderPainted(true);
+            rocketCow.setText("Cow");
+            rocketCow.setBackground(Color.GREEN);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_earthCowActionPerformed
 
     private void earthScientistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthScientistActionPerformed
         // TODO add your handling code here:
-        
-        //This logic sets the "Scientist" button of Earth to be invisible, then makes the "Scientist" button on Rocket to appear.
-        earthScientist.setOpaque(false);
-        earthScientist.setContentAreaFilled(false);
-        earthScientist.setBorderPainted(false);
-        earthScientist.setText("");
-        
-        //Earth's color is Green, that's why the BG is Green
-        rocketScientist.setOpaque(true);
-        rocketScientist.setContentAreaFilled(true);
-        rocketScientist.setBorderPainted(true);
-        rocketScientist.setText("Scientist");
-        rocketScientist.setBackground(Color.GREEN);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getEarth(), "Scientist");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            earthScientist.setOpaque(false);
+            earthScientist.setContentAreaFilled(false);
+            earthScientist.setBorderPainted(false);
+            earthScientist.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketScientist.setOpaque(true);
+            rocketScientist.setContentAreaFilled(true);
+            rocketScientist.setBorderPainted(true);
+            rocketScientist.setText("Scientist");
+            rocketScientist.setBackground(Color.GREEN);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_earthScientistActionPerformed
 
     private void marsGrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsGrainActionPerformed
         // TODO add your handling code here:
         
-        //This logic sets the "Grain" button of Mars to be invisible, then makes the "Grain" button on Rocket to appear.
-        marsGrain.setOpaque(false);
-        marsGrain.setContentAreaFilled(false);
-        marsGrain.setBorderPainted(false);
-        marsGrain.setText("");
-        
-        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
-        rocketGrain.setOpaque(true);
-        rocketGrain.setContentAreaFilled(true);
-        rocketGrain.setBorderPainted(true);
-        rocketGrain.setText("Grain");
-        rocketGrain.setBackground(Color.YELLOW);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getMars(), "Grain");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            marsGrain.setOpaque(false);
+            marsGrain.setContentAreaFilled(false);
+            marsGrain.setBorderPainted(false);
+            marsGrain.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketGrain.setOpaque(true);
+            rocketGrain.setContentAreaFilled(true);
+            rocketGrain.setBorderPainted(true);
+            rocketGrain.setText("Grain");
+            rocketGrain.setBackground(Color.YELLOW);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_marsGrainActionPerformed
 
     private void marsLionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsLionActionPerformed
         // TODO add your handling code here:
-        
-        //This logic sets the "Lion" button of Mars to be invisible, then makes the "Lion" button on Rocket to appear.
-        marsLion.setOpaque(false);
-        marsLion.setContentAreaFilled(false);
-        marsLion.setBorderPainted(false);
-        marsLion.setText("");
-        
-        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
-        rocketLion.setOpaque(true);
-        rocketLion.setContentAreaFilled(true);
-        rocketLion.setBorderPainted(true);
-        rocketLion.setText("Lion");
-        rocketLion.setBackground(Color.YELLOW);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getMars(), "Lion");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            marsLion.setOpaque(false);
+            marsLion.setContentAreaFilled(false);
+            marsLion.setBorderPainted(false);
+            marsLion.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketLion.setOpaque(true);
+            rocketLion.setContentAreaFilled(true);
+            rocketLion.setBorderPainted(true);
+            rocketLion.setText("Lion");
+            rocketLion.setBackground(Color.YELLOW);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_marsLionActionPerformed
 
     private void marsCowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsCowActionPerformed
         // TODO add your handling code here:
-        
-        //This logic sets the "Cow" button of Mars to be invisible, then makes the "Cow" button on Rocket to appear.
-        marsCow.setOpaque(false);
-        marsCow.setContentAreaFilled(false);
-        marsCow.setBorderPainted(false);
-        marsCow.setText("");
-        
-        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
-        rocketCow.setOpaque(true);
-        rocketCow.setContentAreaFilled(true);
-        rocketCow.setBorderPainted(true);
-        rocketCow.setText("Cow");
-        rocketCow.setBackground(Color.YELLOW);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getMars(), "Cow");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            marsCow.setOpaque(false);
+            marsCow.setContentAreaFilled(false);
+            marsCow.setBorderPainted(false);
+            marsCow.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketCow.setOpaque(true);
+            rocketCow.setContentAreaFilled(true);
+            rocketCow.setBorderPainted(true);
+            rocketCow.setText("Cow");
+            rocketCow.setBackground(Color.YELLOW);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_marsCowActionPerformed
 
     private void marsScientistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsScientistActionPerformed
         // TODO add your handling code here:
         
-        //This logic sets the "Scientist" button of Mars to be invisible, then makes the "Scientist" button on Rocket to appear.
-        marsScientist.setOpaque(false);
-        marsScientist.setContentAreaFilled(false);
-        marsScientist.setBorderPainted(false);
-        marsScientist.setText("");
-        
-        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
-        rocketScientist.setOpaque(true);
-        rocketScientist.setContentAreaFilled(true);
-        rocketScientist.setBorderPainted(true);
-        rocketScientist.setText("Scientist");
-        rocketScientist.setBackground(Color.YELLOW);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getMars(), "Scientist");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            marsScientist.setOpaque(false);
+            marsScientist.setContentAreaFilled(false);
+            marsScientist.setBorderPainted(false);
+            marsScientist.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketScientist.setOpaque(true);
+            rocketScientist.setContentAreaFilled(true);
+            rocketScientist.setBorderPainted(true);
+            rocketScientist.setText("Scientist");
+            rocketScientist.setBackground(Color.YELLOW);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_marsScientistActionPerformed
 
     private void rocketHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketHumanActionPerformed
@@ -685,6 +775,10 @@ public class View extends javax.swing.JFrame {
         
         //Save the BG Color of current Grain button here.
         Color c = rocketHuman.getBackground();
+        
+        System.out.println(model.getSpaceship());
+        model.getSpaceship().remove("Human");
+        System.out.println(model.getSpaceship());
         
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
         if(c.equals(Color.GREEN)){
@@ -725,6 +819,7 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(solutionToggle.isSelected())
             stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/statemapsolution.png")));
+            
         else 
             stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/start.png")));
             
@@ -749,18 +844,23 @@ public class View extends javax.swing.JFrame {
     private void earthHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthHumanActionPerformed
         // TODO add your handling code here:
         
-        //This logic sets the "Human" button of Earth to be invisible, then makes the "Human" button on Rocket to appear.
-        earthHuman.setOpaque(false);
-        earthHuman.setContentAreaFilled(false);
-        earthHuman.setBorderPainted(false);
-        earthHuman.setText("");
-        
-        //Earth's color is Green, that's why the BG is Green
-        rocketHuman.setOpaque(true);
-        rocketHuman.setContentAreaFilled(true);
-        rocketHuman.setBorderPainted(true);
-        rocketHuman.setText("Human");
-        rocketHuman.setBackground(Color.GREEN);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getEarth(), "Human");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            earthHuman.setOpaque(false);
+            earthHuman.setContentAreaFilled(false);
+            earthHuman.setBorderPainted(false);
+            earthHuman.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketHuman.setOpaque(true);
+            rocketHuman.setContentAreaFilled(true);
+            rocketHuman.setBorderPainted(true);
+            rocketHuman.setText("Human");
+            rocketHuman.setBackground(Color.GREEN);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_earthHumanActionPerformed
 
     private void earthSavageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthSavageActionPerformed
@@ -860,6 +960,10 @@ public class View extends javax.swing.JFrame {
         
         //Save the BG Color of current Grain button here.
         Color c = rocketLion.getBackground();
+        
+        System.out.println(model.getSpaceship());
+        model.getSpaceship().remove("Lion");
+        System.out.println(model.getSpaceship());
         
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
         if(c.equals(Color.GREEN)){

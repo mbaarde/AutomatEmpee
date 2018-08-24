@@ -15,13 +15,18 @@ public class AutomatMP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
+        Model m = new Model();
+        View v = new View(m);
+        
+        v.setVisible(true);
+        
+//        // TODO code application logic here
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new View().setVisible(true);
+//            }
+//        });
     }
     
 }
