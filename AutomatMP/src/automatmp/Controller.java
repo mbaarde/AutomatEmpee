@@ -33,29 +33,24 @@ public class Controller {
        
     }
     
-    public void launch (ArrayList<String> origin, ArrayList<String> spaceship, ArrayList<String> destination) {
+    public void launch (ArrayList<String> spaceship, ArrayList<String> destination) {
         ArrayList<String> tempship = spaceship;
         ArrayList<String> tempdest = destination;
         
-        System.out.println("Origin: " + origin);
         System.out.println("Spaceship: " + spaceship);
         System.out.println("Destination: " + destination);
         
         if (spaceship.contains("Scientist")){
-            if (isValid(origin)) { //check if origin planet is valid
-                if (isValid(tempship)){ //check if spaceship is valid
-                    for (int j=0;j<tempship.size();j++) 
-                        tempdest.add(tempship.get(j));
-                    if (isValid(tempdest)){ //check if new destination is valid
-                        spaceship.clear();
-                        System.out.println("Transfer success");
-                    }
+            if (isValid(tempship)){ //check if spaceship is valid
+                for (int j=0;j<tempship.size();j++) 
+                    tempdest.add(tempship.get(j));
+                if (isValid(tempdest)){ //check if new destination is valid
+                    spaceship.clear();
+                    System.out.println("Transfer success");
                 }
-                else
-                    System.out.println("Spacehip not allowed");
             }
             else
-                System.out.println("Origin planet not allowed");
+                System.out.println("Spacehip not allowed");
         } 
         else if (!spaceship.contains("Scientist"))
             System.out.println("Spaceship does not contain scientist!");

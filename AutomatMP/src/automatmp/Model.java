@@ -95,13 +95,13 @@ public class Model {
 		Node q12 = new Node(12,"CS",false);
 		nodes.add(q12);	
 		
-		Node q13 = new Node(13,"LHS",true);
+		Node q13 = new Node(13,"LHS",false);
 		nodes.add(q13);		
 
 		Node q14 = new Node(14,"CLS",false);
 		nodes.add(q14);	
 
-		Node q15 = new Node(15,"HHGCLS",false);
+		Node q15 = new Node(15,"HHGCLS",true);
 		nodes.add(q15);			
 		
 		/*
@@ -131,28 +131,28 @@ public class Model {
                 
 		q2.addTransition(new Transition("CS",q1));
 		q2.addTransition(new Transition("CGS",q3));
-		q2.addTransition(new Transition("CHS",q11));
+		q2.addTransition(new Transition("HCS",q11));
                 
 		q3.addTransition(new Transition("CS",q4));
-		q3.addTransition(new Transition("GLS",q7));
+		q3.addTransition(new Transition("LGS",q7));
 		q3.addTransition(new Transition("CGS",q2));
                 
 		q4.addTransition(new Transition("HHS",q5));
-		q4.addTransition(new Transition("CHS",q13));
+		q4.addTransition(new Transition("HCS",q13));
 		q4.addTransition(new Transition("CS",q3));
                 
 		q5.addTransition(new Transition("HHS",q4));
 		q5.addTransition(new Transition("LS",q6));
 		q5.addTransition(new Transition("LGS",q9));
-		q5.addTransition(new Transition("HLS",q14));
+		q5.addTransition(new Transition("LHS",q14));
                 
 		q6.addTransition(new Transition("LS",q5));
 		q6.addTransition(new Transition("CLS",q15));
 		q6.addTransition(new Transition("CS",q10));
                 
 		q7.addTransition(new Transition("LS",q1));
-		q7.addTransition(new Transition("GLS",q3));
-                q7.addTransition(new Transition("HLS",q11));
+		q7.addTransition(new Transition("LGS",q3));
+                q7.addTransition(new Transition("LHS",q11));
                 q7.addTransition(new Transition("HHS",q8));
                 
 		q8.addTransition(new Transition("HHS",q7));
@@ -180,7 +180,7 @@ public class Model {
                 
 		q14.addTransition(new Transition("CLS",q13));
                 q14.addTransition(new Transition("HCS",q10));
-                q14.addTransition(new Transition("HLS",q5));
+                q14.addTransition(new Transition("LHS",q5));
 
 
 	

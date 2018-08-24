@@ -17,6 +17,80 @@ public class View extends javax.swing.JFrame {
     
     private int ctr = 0;
     
+    //assume user's starting position is at 0 (on Earth with no moves)
+    private int pos = 0;
+    
+    public void transport(ArrayList<String> spaceship, ArrayList<Node> nodes){
+        ArrayList<String> tempship = spaceship;
+        ArrayList<Node> tempnode = nodes;
+        
+        String transitionStatement = "";
+        for(int i = 0; i < tempship.size(); i++){
+            transitionStatement += tempship.get(i).charAt(0);
+        }
+        
+        if(spaceship.contains("Scientist")){
+            if(pos == 0 && transitionStatement.contains("C") && transitionStatement.contains("L") && transitionStatement.contains("S")){
+                System.out.println("Current Pos: " + pos);
+                System.out.println("Transition Statement: " + tempnode.get(pos + 1).getNodeLabel());
+                System.out.println("Next Pos: " + pos + 1);
+                stateBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/000111.png")));
+                
+                marsCow.setOpaque(true);
+                marsCow.setContentAreaFilled(true);
+                marsCow.setBorderPainted(true);
+                marsCow.setText("Cow");
+                marsLion.setOpaque(true);
+                marsLion.setContentAreaFilled(true);
+                marsLion.setBorderPainted(true);
+                marsLion.setText("Lion");
+                marsScientist.setOpaque(true);
+                marsScientist.setContentAreaFilled(true);
+                marsScientist.setBorderPainted(true);
+                marsScientist.setText("Scientist");
+
+                rocketCow.setOpaque(false);
+                rocketCow.setContentAreaFilled(false);
+                rocketCow.setBorderPainted(false);
+                rocketCow.setText("");
+                rocketCow.setBackground(rocketTransport.getBackground());
+                rocketLion.setOpaque(false);
+                rocketLion.setContentAreaFilled(false);
+                rocketLion.setBorderPainted(false);
+                rocketLion.setText("");
+                rocketLion.setBackground(rocketTransport.getBackground());
+                rocketScientist.setOpaque(false);
+                rocketScientist.setContentAreaFilled(false);
+                rocketScientist.setBorderPainted(false);
+                rocketScientist.setText("");
+                rocketScientist.setBackground(rocketTransport.getBackground());
+                
+                pos++;
+                
+            }else if(pos == 1 && transitionStatement.contains("C") && transitionStatement.contains("S")){
+                System.out.println("Current Pos: " + pos);
+                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
+                System.out.println("Next Pos: " + pos + 1);
+                pos++;
+            }else if(pos == 1 && transitionStatement.contains("L") && transitionStatement.contains("S")){
+                System.out.println("Current Pos: " + pos);
+                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
+                System.out.println("Next Pos: " + 7);
+                pos = 7;
+            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("G") && transitionStatement.contains("S")){
+                System.out.println("Current Pos: " + pos);
+                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
+                System.out.println("Next Pos: " + pos + 1);
+                pos++;
+            } else if(pos == 2 && transitionStatement.contains("C") && transitionStatement.contains("H") && transitionStatement.contains("S")){
+                System.out.println("Current Pos: " + pos);
+                System.out.println("Transition Statement: " + tempnode.get(pos).getNodeLabel());
+                System.out.println("Next Pos: " + 11);
+                pos = 11;
+            }
+        }
+    }
+    
     public void board (ArrayList<String> origin, String entity) {
         
         if (model.getSpaceship().size() < 3){
@@ -526,6 +600,7 @@ public class View extends javax.swing.JFrame {
         
         ctr++;
         
+        //This one determines the rocket placement if it is on Earth or on Mars
         if(ctr%2 == 1){
             earthGrain.setEnabled(false);
             earthLion.setEnabled(false);
@@ -555,6 +630,8 @@ public class View extends javax.swing.JFrame {
             marsHuman.setEnabled(false);
             marsScientist.setEnabled(false);
         }
+        
+        transport(model.getSpaceship(), model.getNodes());
         
         //Apply controller/model checking of every panel here:
         
@@ -866,18 +943,23 @@ public class View extends javax.swing.JFrame {
     private void earthSavageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_earthSavageActionPerformed
         // TODO add your handling code here:
         
-        //This logic sets the "Savage" button of Earth to be invisible, then makes the "Savage" button on Rocket to appear.
-        earthSavage.setOpaque(false);
-        earthSavage.setContentAreaFilled(false);
-        earthSavage.setBorderPainted(false);
-        earthSavage.setText("");
-        
-        //Earth's color is Green, that's why the BG is Green
-        rocketSavage.setOpaque(true);
-        rocketSavage.setContentAreaFilled(true);
-        rocketSavage.setBorderPainted(true);
-        rocketSavage.setText("Savage(H)");
-        rocketSavage.setBackground(Color.GREEN);
+       if(model.getSpaceship().size() < 3){
+            this.board(model.getEarth(), "Savage");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            earthSavage.setOpaque(false);
+            earthSavage.setContentAreaFilled(false);
+            earthSavage.setBorderPainted(false);
+            earthSavage.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketSavage.setOpaque(true);
+            rocketSavage.setContentAreaFilled(true);
+            rocketSavage.setBorderPainted(true);
+            rocketSavage.setText("Savage");
+            rocketSavage.setBackground(Color.GREEN);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_earthSavageActionPerformed
 
     private void rocketGrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketGrainActionPerformed
@@ -885,6 +967,10 @@ public class View extends javax.swing.JFrame {
         
         //Save the BG Color of current Grain button here.
         Color c = rocketGrain.getBackground();
+        
+        System.out.println(model.getSpaceship());
+        model.getSpaceship().remove("Grain");
+        System.out.println(model.getSpaceship());
         
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
         if(c.equals(Color.GREEN)){
@@ -924,35 +1010,45 @@ public class View extends javax.swing.JFrame {
     private void marsHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsHumanActionPerformed
         // TODO add your handling code here:
         
-        //This logic sets the "Human" button of Mars to be invisible, then makes the "Human" button on Rocket to appear.
-        marsHuman.setOpaque(false);
-        marsHuman.setContentAreaFilled(false);
-        marsHuman.setBorderPainted(false);
-        marsHuman.setText("");
-        
-        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
-        rocketHuman.setOpaque(true);
-        rocketHuman.setContentAreaFilled(true);
-        rocketHuman.setBorderPainted(true);
-        rocketHuman.setText("Human");
-        rocketHuman.setBackground(Color.YELLOW);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getMars(), "Human");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            marsHuman.setOpaque(false);
+            marsHuman.setContentAreaFilled(false);
+            marsHuman.setBorderPainted(false);
+            marsHuman.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketHuman.setOpaque(true);
+            rocketHuman.setContentAreaFilled(true);
+            rocketHuman.setBorderPainted(true);
+            rocketHuman.setText("Human");
+            rocketHuman.setBackground(Color.YELLOW);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_marsHumanActionPerformed
 
     private void marsSavageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marsSavageActionPerformed
         // TODO add your handling code here:
         
-        //This logic sets the "Savage" button of Mars to be invisible, then makes the "Savage" button on Rocket to appear.
-        marsCow.setOpaque(false);
-        marsCow.setContentAreaFilled(false);
-        marsCow.setBorderPainted(false);
-        marsCow.setText("");
-        
-        //Mars' color is ~Orange~ (Let's just make it Yellow), that's why the BG is Yellow
-        rocketCow.setOpaque(true);
-        rocketCow.setContentAreaFilled(true);
-        rocketCow.setBorderPainted(true);
-        rocketCow.setText("Savage(H)");
-        rocketCow.setBackground(Color.YELLOW);
+        if(model.getSpaceship().size() < 3){
+            this.board(model.getMars(), "Savage");
+            //This logic sets the "Grain" button of Earth to be invisible then makes the "Grain" button on Rocket to appear.
+            marsSavage.setOpaque(false);
+            marsSavage.setContentAreaFilled(false);
+            marsSavage.setBorderPainted(false);
+            marsSavage.setText("");
+
+            //Earth's color is Green, that's why the BG is Green
+            rocketSavage.setOpaque(true);
+            rocketSavage.setContentAreaFilled(true);
+            rocketSavage.setBorderPainted(true);
+            rocketSavage.setText("Savage");
+            rocketSavage.setBackground(Color.YELLOW);
+        }else{
+            JOptionPane.showMessageDialog(null, "Spaceship is full!", "WARNING!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_marsSavageActionPerformed
 
     private void rocketLionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rocketLionActionPerformed
@@ -1006,6 +1102,10 @@ public class View extends javax.swing.JFrame {
         //Save the BG Color of current Grain button here.
         Color c = rocketCow.getBackground();
         
+        System.out.println(model.getSpaceship());
+        model.getSpaceship().remove("Cow");
+        System.out.println(model.getSpaceship());
+        
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
         if(c.equals(Color.GREEN)){
             
@@ -1047,6 +1147,10 @@ public class View extends javax.swing.JFrame {
         //Save the BG Color of current Grain button here.
         Color c = rocketSavage.getBackground();
         
+        System.out.println(model.getSpaceship());
+        model.getSpaceship().remove("Savage");
+        System.out.println(model.getSpaceship());
+        
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
         if(c.equals(Color.GREEN)){
             
@@ -1087,6 +1191,10 @@ public class View extends javax.swing.JFrame {
         
         //Save the BG Color of current Grain button here.
         Color c = rocketScientist.getBackground();
+        
+        System.out.println(model.getSpaceship());
+        model.getSpaceship().remove("Scientist");
+        System.out.println(model.getSpaceship());
         
         //Compare current Grain bg color. If Green, send/return to Earth. if not, do Yellow which sends/return to Mars.
         if(c.equals(Color.GREEN)){

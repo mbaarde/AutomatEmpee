@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package automatmp;
-
-
 /**
  *
- * @author Miguel
+ * @author Miguel Baarde, Paolo Delos Reyes, and Miguel Rivera
  */
 public class Transition {
 
